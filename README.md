@@ -13,5 +13,5 @@ Session/Logs Tracker for Assetto Corsa Servers
 - [ ] Filter logs by driver name/GUID
 - [ ] Add more details to session logs
 
-## Usage
+## Installation & Usage
 (work in progress)
