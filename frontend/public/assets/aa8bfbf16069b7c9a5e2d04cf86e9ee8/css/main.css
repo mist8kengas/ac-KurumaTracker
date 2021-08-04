@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Mono&family=Open+Sans&family=Raleway:wght@700&display=swap');
+/* html body */
+html, body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* header */
+header {
+    background-color: #3399ff;
+    position: relative;
+    height: 72px;
+    overflow: hidden;
+}
+header div.nav-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+}
+header div.nav-btn a {
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+}
+header div.nav-btn a button {
+    background-color: #ff9933;
+    color: #000000;
+    display: inline-block;
+    padding: 0.4em;
+    margin: 0 -2px;
+    width: 72px;
+    height: 72px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    transition: 0.2s ease;
+}
+header div.nav-btn a:hover button {
+    background-color: #ff3355;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+header div.nav-btn a button i {
+    font-size: 2em;
+}
+header div.title {
+    padding: 0.9em;
+    margin-left: 70px;
+    white-space: normal;
+    overflow: hidden;
+}
+header div.title h1 {
+    display: block;
+    display: -webkit-box;
+    margin: 0;
+    width: 100%;
+    height: 43.75;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+main {
+    display: inline-block;
+    width: 100%;
+}
+
+/* index page */
+main div.server-list {
+    padding: 0 0.6em;
+    margin: 0.8em;
+}
+main div.server-list ul,
+main div.log-index ul {
+    margin: 0;
+    list-style: none;
+}
+
+/* server page */
+main sub {
+    background-color: #171717;
+    display: block;
+    padding: 0.6em;
+    margin: 1em;
+}
+main sub.info div.server-information,
+main sub.logs div.server-logs {
+    padding: 0 0.6em;
+    margin: 0.8em;
+}
+
+main sub span.label,
+main sub.info div.server-information div.container span {
+    display: block;
+}
+main sub span.label {
+    margin-bottom: 1em;
+    font-size: 18px;
+}
+main sub.info div.server-information div.container span.item:before {
+    color: #666666;
+    margin-right: 0.3em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+main sub.info div.server-information div.container span.item.name::before {
+    content: "Name";
+}
+main sub.info div.server-information div.container span.item.clients::before {
+    content: "Clients";
+}
+main sub.info div.server-information div.container span.item.time-of-day::before {
+    content: "Time";
+}
+main sub.info div.server-information div.container span.item.time-left::before {
+    content: "Session Time Left";
+}
+main sub.info div.server-information div.container span.item.country::before {
+    content: "Country";
+}
+main sub.info div.server-information div.container span.item {
+    color: #cccccc;
+    display: block;
+    margin-bottom: 2px;
+    font-family: 'Lato', sans-serif;
+}
+main sub.info div.server-information div.container span.item.name i.password-icon {
+    color: #e53935;
+    margin-left: 0.2em;
+}
+
+main sub.info div.server-information div.container span.item.country,
+main sub.info div.server-information div.container span.item.country img.server-location {
+    position: relative;
+}
+main sub.info div.server-information div.container span.item.country img.server-location {
+    top: 3px;
+    left: 3px;
+}
+
+main sub.info div.server-information div.container div.track {
+    margin: 1em 0;
+}
+main sub.info div.server-information div.container div.track div.wrapper {
+    padding-top: 0.6em;
+    border-top: 2px solid #242424;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper {
+    margin: 0.3em 0;
+    max-width: 355px;
+    height: 200px;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data {
+    background-color: #000000;
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.image,
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.image div.img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.image div.img-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.image div.img-wrapper div.background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.image div.img-wrapper img.map {
+    position: absolute;
+    bottom: 4em;
+    height: calc(100% - 40%);
+    pointer-events: none;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.image div.img-wrapper span.track-length {
+    color: #cccccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.6em;
+    text-shadow: 0 0 6px #000000;
+    user-select: none;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.image div.img-wrapper span.track-length::after {
+    content: "km";
+    margin-left: 2px;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.6em;
+    text-align: left;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.label span {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 0 0 6px #000000;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.label span.name {
+    color: #cccccc;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.label span.name,
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.label span.description {
+    display: -webkit-box;
+    width: 100%;
+    height: 1.25em;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+main sub.info div.server-information div.container div.track div.wrapper div.track-data-wrapper div.track-data div.label span.description {
+    color: #888888;
+}
+main sub.info div.server-information div.container div.track div.wrapper span.wind-speed::before {
+    content: "Wind Speed";
+}
+main sub.info div.server-information div.container div.track div.wrapper span.ambient-temp::before {
+    content: "Ambient Temperature";
+}
+main sub.info div.server-information div.container div.track div.wrapper span.road-temp::before {
+    content: "Road Temperature";
+}
+
+main sub.info div.server-information div.container a.cm-connect,
+main sub.info div.server-information div.container a.cm-connect button {
+    display: inline-block;
+}
+main sub.info div.server-information div.container a.cm-connect button {
+    background-color: #ff9933;
+    color: #000000;
+    padding: 0.4em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    transition: 0.2s ease;
+}
+main sub.info div.server-information div.container a.cm-connect:hover button {
+    background-color: #ff3355;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* logs */
+main sub.logs table {
+    width: 100%;
+}
+main sub.logs table tr td {
+    padding: 0.6em;
+    vertical-align: top;
+}
+main sub.logs table tr td div.log-index {
+    padding: 0 0.6em;
+    margin: 0.8em;
+}
+main sub.logs table tr td div.log-index li#Y2xvc2U:target {
+    display: none;
+}
+main sub.logs table tr td.t {
+    display: inline-table;
+    width: 100%;
+}
+
+main sub.logs table tr td div.logs {
+    display: flex;
+    padding-top: 0.8em;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #242424;
+}
+main sub.logs table tr td div.logs div.log {
+    display: none;
+}
+main sub.logs table tr td div.logs div.log:target {
+    display: initial;
+}
+
+main sub.logs table tr td div.logs div.log h3 {
+    background-color: #202020;
+    color: #666666;
+    padding: 0.2em 0;
+    margin: 0;
+    text-align: center;
+    border: 3px solid #666666;
+}
+main sub.logs table tr td div.logs div.log h3 code {
+    font-family: 'Roboto Mono', monospace;
+}
+main sub.logs table tr td div.logs div.log ul.container {
+    background-color: #121212;
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub {
+    display: block;
+    text-align: center;
+}
+
+/* log info */
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data {
+    background-color: #000000;
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data div.image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data div.image div.wrapper {
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data div.image div.wrapper div.background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data div.image div.wrapper img.map {
+    position: absolute;
+    bottom: 4em;
+    height: calc(100% - 40%);
+    pointer-events: none;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data div.label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.6em;
+    text-align: left;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data div.label span {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 0 0 6px #000000;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data div.label span.name {
+    color: #cccccc;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.info div.track-data div.label span.description {
+    color: #888888;
+}
+
+/* log list */
+main sub.logs table tr td div.logs div.log ul.container li.sub.list {
+    max-height: 600px;
+    overflow: auto;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list::-webkit-scrollbar {
+    width: 6px;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list::-webkit-scrollbar-thumb {
+    background: #666666;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list::-webkit-scrollbar-thumb:hover {
+    background: #888888;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li {
+    background-color: #202020;
+    margin: 0.6em 0;
+    text-align: center;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li:first-child,
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li:last-child {
+    margin: 0;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li:first-child {
+    margin-bottom: 0.6em;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li:last-child {
+    margin-top: 0.6em;
+}
+
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table,
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr {
+    border: 0;
+    border-spacing: 0;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td {
+    width: 100%;
+    padding: 0;
+}
+
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.session-status {
+    padding: 0.6em 1.2em 0.6em 0.6em;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.session-status span.drivername,
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.session-status span.laptime {
+    color: #cccccc;
+    display: block;
+    margin-bottom: 2px;
+    font-family: 'Lato', sans-serif;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.session-status span.drivername::before,
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.session-status span.laptime::before {
+    color: #666666;
+    margin-right: 0.3em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.session-status span.drivername::before {
+    content: "Driver";
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.session-status span.laptime::before {
+    content: "Lap";
+}
+
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.label {
+    background-color: #171717;
+    padding: 0.3em 0.4em;
+    text-align: center;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.label span.car-name {
+    color: #666666;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.image {
+    background-color: #000000;
+    display: block;
+    text-align: center;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.image div {
+    display: inline-block;
+    position: relative;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.image div img.car-livery,
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.image div img.car-brand {
+    position: absolute;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.image div img.car-livery {
+    top: 4px;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.image div img.car-brand {
+    bottom: 4px;
+}
+main sub.logs table tr td div.logs div.log ul.container li.sub.list div.log-list ul li div.wrapper table tr td div.car-information div.image div img.car-thumbnail {
+    width: 200px;
+    height: 112px;
+}
+
+/* <a href> */
+a:link, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+a:link:hover, a:visited:hover {
+    text-decoration: underline;
+}
+
+/* footer */
+footer {
+    padding: 1em;
+    text-align: center;
+}
+footer span {
+    color: #666666;
+    font-size: 13px;
+    font-family: 'Roboto Mono', monospace;
+}

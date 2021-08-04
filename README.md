@@ -1,20 +1,23 @@
 # KurumaTracker
-Session/Logs Tracker for Assetto Corsa Servers
+Session/Logs web interface for Assetto Corsa Servers
 
 ### Features
 - View session logs in a web UI
 - View driver Steam profile
 - Extensive log details
 - Support for multiple server logs
+- Server track & session details
 
 ### Todo
 - [x] Session logs
-- [ ] Live server information
+- [x] Live server information
+- [x] Add more details to session logs
 - [ ] Filter logs by driver name/GUID
-- [ ] Add more details to session logs
+- [ ] Show connected drivers list
 
 ### Requirements
 > This script requires [ac-server-wrapper](https://github.com/gro-ove/ac-server-wrapper) to be running on your Assetto Corsa server.
+
 - Webserver & Assetto Corsa server:
     - [NodeJS](https://nodejs.org/) (recommended: > v15.4.0) and [NPM (Node Package Manager)](https://www.npmjs.com/)
     - [NGINX](https://nginx.org/) (preferred) or [Apache2](https://httpd.apache.org/) to reverse-proxy the web interface (**OPTIONAL BUT RECOMMENDED**)
@@ -22,6 +25,8 @@ Session/Logs Tracker for Assetto Corsa Servers
     - [ac-server-wrapper](https://github.com/gro-ove/ac-server-wrapper)
 
 ### Installation & Usage
+> Watch the YouTube video [here](https://youtu.be/) for a video-version of installing and configuring **KurumaTracker**.
+
 1. Download the .zip file and extract the contents of **frontend** to a directory in your webserver and extract the contents of **backend-api** to a directory in your machine running the Assetto Corsa server.
 2. In the directory where you extracted the files, run: `npm ci`
 3. Open the `config.json` of **frontend** and **backend-api** and change or add the values of each option. (Refer to the [configuration](#configuration) section)
@@ -106,3 +111,21 @@ Example `config.json` file for **backend-api**:
     }
 }
 ```
+
+### Adding custom tracks/cars
+> Watch the YouTube video [here](https://youtu.be/) for a video-version of adding custom tracks/cars.
+
+For tracks:
+1. Add a directory with the track name (ex: `ks_nordschleife`) under `./public/assets/d1c4bc5da1eb2c8a80600ef7c890c761/tracks` in the directory where you extracted the contents of the **public** directory.
+2. - For tracks with multiple layouts:
+        1. Inside the map directory, create a new directory with the same name as the layout, then copy `ui_track.json`, `preview.png`, and `map.png` (note: `map.png` is the image file that has the track layout)
+    - For tracks with a single layout:
+        1. Inside the map directory, copy `ui_track.json`, `preview.png`, and `map.png` from your track folder (note: `map.png` is the image file that has the track layout)
+
+For cars:
+1. Add a directory with the car name (ex: `ferrari_458`) under `./public/assets/d1c4bc5da1eb2c8a80600ef7c890c761/cars` in the directory where you extracted the contents of the **public** directory.
+2. Inside the car directory, copy `ui_car.json` from your car folder
+3. Inside the car directory, create a new directory for each livery/color (ex: `00_rosso_scuderia`)
+4. Inside the livery/color directory, add `livery.png` and `preview.png` from your livery/color folder.
+
+(note: **KurumaTracker** by default comes with Assetto Corsa's (default + DLC) track/car assets required for **KurumaTracker** to function properly. So if your server only runs the default or DLC tracks/cars, you don't have to do anything)
