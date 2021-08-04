@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <title><%= `${config.name} | Server: ${config.servers[server_data[0].id][0] ? config.servers[server_data[0].id][0] : server_data[1].name}`; %></title>
+
+        <!-- stylesheets -->
+        <link rel="stylesheet" href="/assets/aa8bfbf16069b7c9a5e2d04cf86e9ee8/css/main.min.css" type="text/css">
+
+        <!-- other properties -->
+        <link rel="icon" type="image/png" href="/favicon.ico?n=946afd14804525f0">
+        <link rel="canonical" href="<%= config.url; %>">
+
+        <!-- meta properties -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="dark">
+        <meta property="theme-color" content="#3399ff">
+
+        <!-- opengraph protocol -->
+        <meta property="og:site_name" content="<%- config.name %>">
+        <meta property="og:title" content="<%- server_data[0].metadata.name[0] %> Server Data">
+        <meta property="og:description" content="">
+        <meta property="og:url" content="<%- config.url; %>">
+        <meta property="og:image" content="/assets/5876ab1e2dfc774b8e72aac46f1bc51f/f42c53bba7e34f84.png">
+
+        <!-- jquery -->
+        <script src="https://api.hioctane.org/scripts/jquery/latest/dist/jquery.min.js" type="text/javascript"></script>
+
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://api.hioctane.org/scripts/fontawesome/fa-free/5.15.3/css/all.css">
+    </head>
+    <body>
+        <%- include('.pre/header', {title: `Server: ${config.servers[server_data[0].id][0] ? config.servers[server_data[0].id][0] : server_data[1].name}`}); %>
+        <main>
+            <sub class="info">
+                <div class="server-information">
+                    <span class="label">Server Information</span>
+                    <div class="container">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <span class="item name"><%= server_data[1].name; %><%- server_data[1].pass == true ? "<i class=\"fas fa-lock password-icon\" title=\"This server requires a password to join\"></i>" : ""; %></span>
+                                        <span class="item clients"><%= `${server_data[1].clients}/${server_data[1].maxclients}`; %></span>
+                                        <span class="item time-of-day"><%= ac_func.calculateTimeBySunAngle(server_data[1].timeofday); %></span>
+                                        <span class="item time-left" data-t="<%= new Date(server_data[1].until).getTime(); %>"><%= new Date((new Date(server_data[1].until).getTime() - new Date().getTime())).toISOString().substr(11, 8); %></span>
+                                        <span class="item country" title="<%= `${server_data[1].city}, ${server_data[1].country[0]}`; %>"><%= server_data[1].country[0]; %><img class="server-location" src="<%= `https://kurumatracker.812125.xyz/assets/5876ab1e2dfc774b8e72aac46f1bc51f/b835234a3dd6a0d5/16/${server_data[1].country[1]}.png`; %>"></span>
+                                        <div class="track">
+                                            <div class="wrapper">
+                                                <div class="track-data-wrapper">
+                                                    <div class="track-data">
+                                                        <div class="image"<%- missing_track ? ` title="Unknown or missing track"` : ""; %>>
+                                                            <div class="img-wrapper">
+                                                                <div class="background" style="background-image: url('<%= missing_track ? `/assets/d1c4bc5da1eb2c8a80600ef7c890c761/tracks/_unknown_/preview.png` : `/assets/d1c4bc5da1eb2c8a80600ef7c890c761/tracks/${server_data[1].track.replace(`csp/0/../`, ``).replace(`-`, `/`)}/preview.png`; %>');"></div>
+                                                                <img class="map" src="<%= missing_track ? `/assets/d1c4bc5da1eb2c8a80600ef7c890c761/tracks/_unknown_/map.png` : `/assets/d1c4bc5da1eb2c8a80600ef7c890c761/tracks/${server_data[1].track.replace(`csp/0/../`, ``).replace(`-`, `/`)}/map.png`; %>">
+                                                                <span class="track-length"><%= Number((parseInt(current_track.length) / 1000).toFixed(1)); %></span>
+                                                            </div>
+                                                            <div class="label">
+                                                                <span class="name"><%= missing_track ? current_track.name : current_track.name; %></span>
+                                                                <span class="description" title="<%- current_track.description.length >= 36 ? current_track.description : ""; %>"><%= current_track.description; %></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span class="item wind-speed"><%= `${server_data[1].windSpeed} km/h (${Number((server_data[1].windSpeed / 0.62 - server_data[1].windSpeed).toFixed(1))} mph)`; %></span>
+                                                <span class="item ambient-temp"><%= server_data[1].ambientTemperature %> &deg;C</span>
+                                                <span class="item road-temp"><%= server_data[1].roadTemperature %> &deg;C</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div><a class="cm-connect" href="<%= `https://acstuff.ru/s/q:race/online/join?ip=${server_data[1].ip}&httpPort=${server_data[1].cport}`; %>" target="_blank" title="Connect using CM (Conent Manager)"><button>Connect</button></a></div>
+                    </div>
+                </div>
+            </sub>
+            <sub class="logs">
+                <div class="server-logs">
+                    <span class="label">Result Logs</span>
+                    <div class="container">
+                        <table>
+                            <tr>
+                                <td class="t">
+                                    <div class="log-index">
+                                        <ul>
+                                            <li><span><a href="#" title="Close">Close</a></span></li>
+                                            <%_ for(a = 0; a < log_list.index.length; a++){ let data = [Object.keys(log_list.logs)[a], Object.values(log_list.logs)[a]];  _%>
+                                            <li><span><a href="<%= `#log_${/^(.*)_(.*)$/.exec(data[0])[1].replaceAll(`_`, `-`)}` %>"><%= `${new Date(/^(.*)_(.*)_(.*)_(.*)$/.exec(data[0])[1].replaceAll(`_`, `-`)).toLocaleDateString('en-US')} (${/^(.*)_(.*)$/.exec(data[0])[1].replaceAll(`_`, `-`)})`; %></a></span></li>
+                                            <%_ } _%>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td class="t">
+                                    <div class="logs">
+                                        <%_ for(a = 0; a < log_list.index.length; a++){ let data = [Object.keys(log_list.logs)[a], Object.values(log_list.logs)[a]];  _%>
+                                        <div id="log_<%= /^(.*)_(.*)$/.exec(data[0])[1].replaceAll(`_`, `-`); %>" class="log <%= data[0] %>">
+                                            <h3><code><%= /^(.*)_(.*)$/.exec(data[0])[1].replaceAll(`_`, `-`); %></code></h3>
+                                            <ul class="container">
+                                                <li class="sub info">
+                                                    <div class="log-info">
+                                                        <div class="track-data">
+                                                            <div class="image">
+                                                                <div class="wrapper">
+                                                                    <div class="background" style="background-image: url('<%= `/assets/d1c4bc5da1eb2c8a80600ef7c890c761/tracks/${data[1].TrackName.replace(`csp/0/../`, ``)}/${data[1].TrackConfig}/preview.png`; %>');"></div>
+                                                                    <img class="map" src="<%= `/assets/d1c4bc5da1eb2c8a80600ef7c890c761/tracks/${data[1].TrackName.replace(`csp/0/../`, ``)}/${data[1].TrackConfig}/map.png`; %>">
+                                                                </div>
+                                                                <div class="label">
+                                                                    <span class="name"><%= `${track_list[0][a].name} (${Number((track_list[0][a].length / 1000).toFixed(1))} km)`; %></span>
+                                                                    <span class="description"><%= track_list[0][a].description; %></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="sub list">
+                                                    <div class="log-list">
+                                                        <ul>
+                                                            <%_ for(b = 0; b < Object.keys(data[1].Laps).length; b++){ let lapData = data[1].Laps[b]; _%>
+                                                            <li>
+                                                                <div class="wrapper">
+                                                                    <table>
+                                                                        <tr>
+                                                                            <%_ let carData = data[1].Cars[lapData.CarId], carMetadata = car_list[lapData.CarModel]; _%>
+                                                                            <td>
+                                                                                <div class="session-status">
+                                                                                    <span class="drivername"><%- lapData.DriverGuid ? `<a href="https://steamcommunity.com/profiles/${lapData.DriverGuid}" target="_blank" title="View Steam Profile">${lapData.DriverName}</a>` : lapData.DriverName; %></span>
+                                                                                    <%_ let time = new Date(lapData.LapTime); _%>
+                                                                                    <span class="laptime"><%= time.getUTCHours() == 0 ? `${time.getUTCMinutes()}:${time.getUTCSeconds()}.${time.getUTCMilliseconds()}` : `${time.getUTCHours()}:${time.getUTCMinutes()}:${time.getUTCSeconds()}.${time.getUTCMilliseconds()}`; %></span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="car-information">
+                                                                                    <div class="image">
+                                                                                        <div>
+                                                                                            <img class="car-livery" src="/assets/d1c4bc5da1eb2c8a80600ef7c890c761/cars/<%= `${carData.Model}/${carData.Skin}`; %>/livery.png">
+                                                                                            <img class="car-brand" src="/assets/d1c4bc5da1eb2c8a80600ef7c890c761/brand/<%= carMetadata.brand.replace(` `, `_`); %>.png">
+                                                                                            <img class="car-thumbnail" src="/assets/d1c4bc5da1eb2c8a80600ef7c890c761/cars/<%= `${carData.Model}/${carData.Skin}`; %>/preview.jpg">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="label"><span class="car-name"><%= carMetadata.name %></span></div>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </li>
+                                                            <%_ } _%>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <%_ } _%>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </sub>
+        </main>
+        <%- include('.pre/footer'); %>
+        <js-wrapper>
+            <script>(()=>{i=setInterval(()=>{a=$("span.item.time-left"),t=(new Date(parseInt(a.data("t"))).getTime()-new Date().getTime());a.text(new Date(t).toISOString().substr(11,8));if(t<=0){clearInterval(i);window.location.reload()};},1000);})();</script>
+        </js-wrapper>
+    </body>
+</html>
