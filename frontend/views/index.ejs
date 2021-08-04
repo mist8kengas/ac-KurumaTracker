@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title><%= `${config.name} - KurumaTracker`; %></title>
+
+        <!-- stylesheets -->
+        <link rel="stylesheet" href="/assets/aa8bfbf16069b7c9a5e2d04cf86e9ee8/css/main.css" type="text/css">
+
+        <!-- other properties -->
+        <link rel="icon" type="image/png" href="/favicon.ico?n=946afd14804525f0">
+        <link rel="canonical" href="<%= config.url; %>">
+
+        <!-- meta properties -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="dark">
+        <meta property="theme-color" content="#3399ff">
+
+        <!-- opengraph protocol -->
+        <meta property="og:site_name" content="<%= config.name %>">
+        <meta property="og:title" content="Server List">
+        <meta property="og:description" content="">
+        <meta property="og:url" content="<%= config.url; %>">
+        <meta property="og:image" content="/assets/5876ab1e2dfc774b8e72aac46f1bc51f/f42c53bba7e34f84.png">
+
+        <!-- jquery -->
+        <script src="https://api.hioctane.org/scripts/jquery/latest/dist/jquery.min.js" type="text/javascript"></script>
+
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://api.hioctane.org/scripts/fontawesome/fa-free/5.15.3/css/all.css">
+    </head>
+    <body>
+        <%- include('.pre/header', {title: config.name}); %>
+        <main>
+            <div class="server-list">
+                <span class="label">Server List:</span>
+                <ul>
+                    <%_ for(i = 0; i < Object.keys(server_data).length; i++){ _%>
+                    <li class="server server-<%= Object.keys(server_data)[i]; %>"><a href="/server/<%= Object.keys(server_data)[i]; %>"><%= Object.values(server_data)[i][0]; %></a></li>
+                    <%_ } _%>
+                </ul>
+            </div>
+        </main>
+        <%- include('.pre/footer'); %>
+    </body>
+</html>
