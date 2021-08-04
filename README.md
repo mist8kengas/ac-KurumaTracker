@@ -14,6 +14,7 @@ Session/Logs web interface for Assetto Corsa Servers
 - [x] Add more details to session logs
 - [ ] Filter logs by driver name/GUID
 - [ ] Show connected drivers list
+- [ ] Make video tutorial on how to install and use **KurumaTracker**
 
 ### Requirements
 > This script requires [ac-server-wrapper](https://github.com/gro-ove/ac-server-wrapper) to be running on your Assetto Corsa server.
