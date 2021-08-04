@@ -1,0 +1,12 @@
+{
+	"name": "Unknown track",
+	"description": "",
+	"tags" : ["unknown_track"],
+	"geotags": ["lat", "lon"],
+	"country": "",
+	"city": "",
+	"length": "",
+	"width": "",
+	"pitboxes": "",
+	"run": "clockwise"
+}
